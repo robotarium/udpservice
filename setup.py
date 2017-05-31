@@ -6,5 +6,5 @@ setup(name='udpservice',
       version='1.0',
       description='UDP service for Robotarium',
       author='Paul Glotfelter',
-      packages=[],
+      packages=['udp_service'],
      )
