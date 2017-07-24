@@ -1,14 +1,25 @@
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
+FROM alpine:3.6
 
 # Add code directory
-ADD . /code
+RUN mkdir /code
 WORKDIR /code
 
 # Update dist
-RUN apt-get -y update
-RUN apt-get -y upgrade
+#RUN apt-get -y update
+#RUN apt-get -y upgrade
 
-RUN apt-get install -y python3 python3-pip
-RUN pip3 install paho-mqtt
+#RUN apt-get install -y python3 python3-pip
+RUN apk --update add python3
 
-ENTRYPOINT ["python3", "udpservice.py"]
+# Get git
+#RUN apt-get install -y git
+RUN apk --update add git
+
+# Get vizier framework
+RUN git clone https://github.com/robotarium/vizier.git
+RUN pip3 install -r vizier/python/requirements.txt vizier/python/
+
+# Get UDP service
+RUN git clone https://github.com/robotarium/udpservice.git
+RUN pip3 install udpservice/
