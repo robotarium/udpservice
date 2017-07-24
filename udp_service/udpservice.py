@@ -38,7 +38,13 @@ def main():
 
               port_tuple = udp_ports[message["MAC"]]
 
-              message_back = {"send_to" : port_tuple[0], "receive_on" : port_tuple[1], "host" : args.host, "msgType" : messages.MSG_HOST_IP}
+              message_back = {
+              "send_to" : port_tuple[0],
+              "receive_on" : port_tuple[1],
+              "host" : args.host,
+              "ap" : "robotarium_ap",
+              "pass" : "robotarium",
+              "msgType" : messages.MSG_HOST_IP}
 
               print(message)
 
