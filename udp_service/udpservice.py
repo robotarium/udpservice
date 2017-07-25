@@ -15,6 +15,8 @@ def main():
 
     args = parser.parse_args()
 
+    host=socket.gethostbyname(args.host)
+
     try:
         f = open(args.udp_ports, 'r')
         udp_ports = json.load(f)
@@ -41,7 +43,7 @@ def main():
               message_back = {
               "send_to" : port_tuple[0],
               "receive_on" : port_tuple[1],
-              "host" : args.host,
+              "host" : host,
               "ap" : "robotarium_ap",
               "pass" : "robotarium",
               "msgType" : messages.MSG_HOST_IP}
