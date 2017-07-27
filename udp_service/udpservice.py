@@ -32,8 +32,7 @@ def main():
 
         message = json.loads(d)
 
-        print("Got message: " + repr(message) + "from ip: " + repr(a[0]));
-        #print("Got message: " + repr(message) + "from host: " + repr(a));
+        print("Got message: " + repr(message) + "from ip: " + repr(a));
 
         try:
           if message["MAC"] in udp_ports:
