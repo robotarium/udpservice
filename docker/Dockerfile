@@ -16,6 +16,8 @@ RUN apt-get install -y python3 python3-pip
 RUN apt-get install -y git
 #RUN apk --update add git
 
+ENV RECLONE-ENV 1
+
 # Get vizier framework
 RUN git clone https://github.com/robotarium/vizier.git
 RUN pip3 install -r vizier/python/requirements.txt vizier/python/

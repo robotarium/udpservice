@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build --tag robotarium:udp_service .
+docker build --tag robotarium:udp_general_purpose .
