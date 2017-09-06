@@ -6,12 +6,17 @@ import udpserver
 import argparse
 import messages
 
+global ap_channel
+ap_channel = 0
+
 def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("udp_ports", help="UDP port config file")
     parser.add_argument("host", help="UDP port config file")
     parser.add_argument("udp_port", help="UDP port config file")
+    parser.add_argument("ssid", help="UDP port config file")
+    parser.add_argument("passkey", help="UDP port config file")
 
     args = parser.parse_args()
 
@@ -26,6 +31,8 @@ def main():
         return -1
 
     def handler(t, d, a):
+
+        global ap_channel
 
         if(d[len(d)-1] == '\x00'):
             d = d[:len(d)-1]
@@ -43,15 +50,20 @@ def main():
               "send_to" : port_tuple[0],
               "receive_on" : port_tuple[1],
               "host" : host,
-              "ap" : "robotarium_ap",
-              "pass" : "robotarium",
+              "ap" : args.ssid,
+              "pass" : args.passkey,
+              "cha" : (ap_channel+1),
               "msgType" : messages.MSG_HOST_IP}
+
+              print("Assigning to channel: " + repr(ap_channel))
 
               print(message)
 
               print("UDP ports: %i %i" % tuple(port_tuple))
 
               print(message_back)
+
+              ap_channel = (ap_channel + 5) % 15
 
               t.sendto(json.dumps(message_back).encode("UTF-8"), a)
 
