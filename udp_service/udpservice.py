@@ -20,7 +20,7 @@ def main():
 
     args = parser.parse_args()
 
-    host=socket.gethostbyname(args.host)
+    #host=socket.gethostbyname(args.host)
 
     try:
         f = open(args.udp_ports, 'r')
@@ -55,7 +55,7 @@ def main():
               "cha" : (ap_channel+1),
               "msgType" : messages.MSG_HOST_IP}
 
-              print("Assigning to channel: " + repr(ap_channel))
+              print("Assigning to channel: " + repr(ap_channel+1))
 
               print(message)
 
