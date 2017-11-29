@@ -1,5 +1,6 @@
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
 #FROM alpine:3.6
+FROM armv7/armhf-ubuntu:16.04
 
 # Add code directory
 RUN mkdir /code

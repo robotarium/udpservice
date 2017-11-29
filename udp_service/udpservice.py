@@ -49,7 +49,7 @@ def main():
               message_back = {
               "send_to" : port_tuple[0],
               "receive_on" : port_tuple[1],
-              "host" : host,
+              "host" : args.host,
               "ap" : args.ssid,
               "pass" : args.passkey,
               "cha" : (ap_channel+1),
@@ -70,6 +70,7 @@ def main():
           else:
               print("MAC address: " + repr(message["MAC"]) + " not registered")
         except Exception as e:
+          print(repr(e))
           pass
 
     udp_server = udpserver.UDPServerProtocol(args.udp_port, handler)
