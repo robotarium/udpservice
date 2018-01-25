@@ -1,6 +1,5 @@
-#FROM ubuntu:16.04
-#FROM alpine:3.6
-FROM armv7/armhf-ubuntu:16.04
+FROM ubuntu:16.04
+#FROM armv7/armhf-ubuntu
 
 # Add code directory
 RUN mkdir /code
@@ -21,7 +20,7 @@ ENV RECLONE-ENV 1
 
 # Get vizier framework
 RUN git clone https://github.com/robotarium/vizier.git
-RUN pip3 install -r vizier/python/requirements.txt vizier/python/
+RUN pip3 install vizier/python/
 
 # Get UDP service
 RUN git clone https://github.com/robotarium/udpservice.git
